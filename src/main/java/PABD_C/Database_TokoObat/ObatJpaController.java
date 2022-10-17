@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -26,11 +27,16 @@ public class ObatJpaController implements Serializable {
     public ObatJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("PABD_C_Database_TokoObat_jar_0.0.1-SNAPSHOTPU");
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
+    public ObatJpaController() {
+    }
+    
+    
 
     public void create(Obat obat) throws PreexistingEntityException, Exception {
         EntityManager em = null;
